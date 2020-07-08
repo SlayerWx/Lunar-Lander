@@ -21,17 +21,14 @@ public class stats : MonoBehaviour // asAS
     private Rigidbody2D playerRigid;
     [SerializeField]
     private move playerMove;
-    private float timerS;
-    private int timerM;
     [SerializeField]
     private Transform tr;
-
+    [SerializeField]
+    TimeOnLevel timer;
     // Start is called before the first frame update
     void Start()
     {
-        time.text = "Time 0:00";
-        timerS = 0.0f;
-        timerM = 0;
+        time.text = "Time 0:00"; 
         points.text = "Points";
         gasoline.text = "Gasoline ??";
         altitude.text = "altitude ??";
@@ -42,16 +39,17 @@ public class stats : MonoBehaviour // asAS
     // Update is called once per frame
     void Update()
     {
-        timerS += Time.deltaTime;
-        if(timerS >60)
-        {
-            timerS = 0;
-            timerM++;
-        }
-        time.text = "Time " + timerM + ":"+ (int)timerS;
+        if(timer.GetSeconds()>9) time.text = "Time " + timer.getMinutes() + ":"+ timer.GetSeconds();
+        else time.text = "Time " + timer.getMinutes() + ":0" + timer.GetSeconds(); 
         gasoline.text = "Gasoline " + playerMove.getGasoline();
-        verticalVel.text = "Vertical Vel " + (int)(playerRigid.velocity.y*10);
-        horizontalVel.text = "Horizontal vel " + (int)(playerRigid.velocity.x*10);
+        if ((int)(playerRigid.velocity.y * 10) > 0) verticalVel.text = "Vertical vel " + (int)Mathf.Abs(playerRigid.velocity.y * 10) + " Up";
+        else if ((int)(playerRigid.velocity.y * 10) < 0) verticalVel.text = "Vertical vel " + (int)Mathf.Abs(playerRigid.velocity.y * 10) + " Down";
+        else verticalVel.text = "Vertical vel " + (int)Mathf.Abs(playerRigid.velocity.y * 10);
+       // verticalVel.text = "Vertical Vel " + (int)Mathf.Abs(playerRigid.velocity.y*10);
+        if ((int)(playerRigid.velocity.x*10) < 0) horizontalVel.text = "Horizontal vel " + (int)Mathf.Abs(playerRigid.velocity.x * 10) + " Left";
+        else if ((int)(playerRigid.velocity.x*10) > 0) horizontalVel.text = "Horizontal vel " + (int)Mathf.Abs(playerRigid.velocity.x * 10) + " Right";
+        else horizontalVel.text = "Horizontal vel " + (int)Mathf.Abs(playerRigid.velocity.x * 10); 
         altitude.text = "Altitude " + (int)(Mathf.Abs(playerMove.transform.position.y) + Mathf.Abs(tr.position.y));
     }
 }
+//asAS
