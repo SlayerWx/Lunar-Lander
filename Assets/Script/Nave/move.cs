@@ -12,8 +12,6 @@ public class move : MonoBehaviour
     [SerializeField]
     private ParticleSystem myPS;
     private int gasoline;
-    [SerializeField]
-    private Vector2 gravity;
     void Start()
     {
         myRig = GetComponent<Rigidbody2D>();
@@ -24,10 +22,6 @@ public class move : MonoBehaviour
     {
         UseGasoline();
         Rotar();
-    }
-    void FixedUpdate()
-    {
-        GravityPlanet();
     }
     void UseGasoline()
     {
@@ -60,8 +54,8 @@ public class move : MonoBehaviour
     {
         return gasoline;
     }
-    void GravityPlanet()
+    public void ForceAffecting(Vector2 force)
     {
-        myRig.AddForce(gravity);
+        myRig.AddForce(force);
     }
 }
