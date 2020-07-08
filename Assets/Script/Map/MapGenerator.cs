@@ -19,66 +19,110 @@ public class MapGenerator : MonoBehaviour
     Transform rightWall;
     [SerializeField]
     Transform upWall;
-    void Start()//asAS
+    [SerializeField]
+    Transform downLimit;
+    [SerializeField]
+    float modifyDownLimitPosition;
+    List<Transform> allMapSeted;
+    void OnEnable()//asAS
     {
+        allMapSeted = new List<Transform>();
         start = myCm.ScreenToWorldPoint(Vector3.zero).x;
         end = myCm.ViewportToWorldPoint(Vector3.right).x;
         Generate();
         leftWall.position = myCm.ViewportToWorldPoint(Vector3.zero);
         rightWall.position = myCm.ViewportToWorldPoint(Vector3.right);
         upWall.position = myCm.ViewportToWorldPoint(Vector3.up);
+        downLimit.position = myCm.ScreenToWorldPoint(new Vector3(0,-1 + modifyDownLimitPosition, 0));
     }
-
-    void Generate()//asAS
+    
+    void Generate()
     {
         int generator = Random.Range(0, 5);
         if (lastInstantiated == null) 
         {
-            lastInstantiated = Instantiate(map[generator], this.transform);
-            lastInstantiated.transform.position = new Vector3(start+(distance/2), 0, 1);
+            lastInstantiated = Instantiate(map[generator], transform);
+            lastInstantiated.transform.position = new Vector3(start+(distance/2)-1, 0, 1);
+            allMapSeted.Add(lastInstantiated.transform);
         }
-        while (lastInstantiated.transform.position.x < end)
+        while (lastInstantiated.transform.position.x < end)//asAS
         {
-            if(generator == 0)
+
+            if (generator == 0)
             {
                 generator = Random.Range(1, 4);
                 lastInstantiated = Instantiate(map[generator],
-                    new Vector3(lastInstantiated.transform.position.x + distance, 
-                                lastInstantiated.transform.position.y, 1),
-                    Quaternion.identity, this.transform);
+                    new Vector3(lastInstantiated.transform.position.x + distance,
+                             lastInstantiated.transform.position.y, 1),
+                    Quaternion.identity, transform);
+                allMapSeted.Add(lastInstantiated.transform);
             }
-            else if(generator == 1)
+            else if (generator == 1)
             {
                 generator = 0;
                 lastInstantiated = Instantiate(map[generator],
                     new Vector3(lastInstantiated.transform.position.x,
                                 lastInstantiated.transform.position.y + distance, 1),
-                    Quaternion.identity, this.transform);
+                    Quaternion.identity, transform);
+                allMapSeted.Add(lastInstantiated.transform);
             }
-            else if(generator == 2 )
+            else if (generator == 2)
             {
                 generator = Random.Range(3, 4);
                 lastInstantiated = Instantiate(map[generator],
-                    new Vector3(lastInstantiated.transform.position.x +distance, 
+                    new Vector3(lastInstantiated.transform.position.x + distance,
                                 lastInstantiated.transform.position.y, 1),
-                    Quaternion.identity, this.transform);
+                    Quaternion.identity, transform);
+                allMapSeted.Add(lastInstantiated.transform);
             }
-            else if(generator == 3)
+            else if (generator == 3)
             {
                 generator = 4;
                 lastInstantiated = Instantiate(map[generator],
                     new Vector3(lastInstantiated.transform.position.x,
                                 lastInstantiated.transform.position.y - distance, 1),
-                    Quaternion.identity, this.transform);
+                    Quaternion.identity, transform);
+                allMapSeted.Add(lastInstantiated.transform);
             }
-            else if(generator == 4)
+            else if (generator == 4)
             {
-                generator= Random.Range(1, 4);
+                generator = Random.Range(1, 4);
                 lastInstantiated = Instantiate(map[generator],
-                    new Vector3(lastInstantiated.transform.position.x +distance, 
+                    new Vector3(lastInstantiated.transform.position.x + distance,
                                 lastInstantiated.transform.position.y, 1),
-                    Quaternion.identity, this.transform);
+                    Quaternion.identity, transform);
+                allMapSeted.Add(lastInstantiated.transform);
+            }
+          //  CorrectorLimit(generator);
+        }
+    }
+    void CorrectorLimit(int lastGenerator)//asAS
+    {
+        if(downLimit.position.y-2 > lastInstantiated.transform.position.y)
+        {
+            if(lastGenerator == 3)
+            {
+                lastGenerator = 4;
+                lastInstantiated = Instantiate(map[lastGenerator],
+                    new Vector3(lastInstantiated.transform.position.x,
+                                lastInstantiated.transform.position.y, 1),
+                    Quaternion.identity, transform);
+                allMapSeted.Add(lastInstantiated.transform);
+            }
+            if(lastGenerator == 4)
+            {
+                lastGenerator = 1;
+                lastInstantiated = Instantiate(map[lastGenerator],
+                    new Vector3(lastInstantiated.transform.position.x + distance,
+                             lastInstantiated.transform.position.y, 1),
+                    Quaternion.identity, transform);
+                allMapSeted.Add(lastInstantiated.transform);
             }
         }
     }
+    public List<Transform> GetMapSeted()
+    {
+        return allMapSeted;
+    }
+
 }
