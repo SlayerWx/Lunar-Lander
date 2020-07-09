@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class myCollision : MonoBehaviour
+public class ObjectiveCollision : MonoBehaviour
 {
     [SerializeField]
     bool imVictoryCollision = false;
