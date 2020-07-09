@@ -24,7 +24,9 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     float modifyDownLimitPosition;
     List<Transform> allMapSeted;
-    void OnEnable()//asAS
+    [SerializeField]
+    private Transform upLimitGeneration;
+    void OnEnable()
     {
         allMapSeted = new List<Transform>();
         start = myCm.ScreenToWorldPoint(Vector3.zero).x;
@@ -45,7 +47,7 @@ public class MapGenerator : MonoBehaviour
             lastInstantiated.transform.position = new Vector3(start+(distance/2)-1, 0, 1);
             allMapSeted.Add(lastInstantiated.transform);
         }
-        while (lastInstantiated.transform.position.x < end)//asAS
+        while (lastInstantiated.transform.position.x < end)
         {
 
             if (generator == 0)
@@ -65,6 +67,15 @@ public class MapGenerator : MonoBehaviour
                                 lastInstantiated.transform.position.y + distance, 1),
                     Quaternion.identity, transform);
                 allMapSeted.Add(lastInstantiated.transform);
+                if(lastInstantiated.transform.position.y > upLimitGeneration.position.y)
+                {
+                    generator = 3;
+                    lastInstantiated = Instantiate(map[generator],
+                        new Vector3(lastInstantiated.transform.position.x + distance,
+                                 lastInstantiated.transform.position.y, 1),
+                        Quaternion.identity, transform);
+                    allMapSeted.Add(lastInstantiated.transform);
+                }
             }
             else if (generator == 2)
             {
@@ -83,6 +94,21 @@ public class MapGenerator : MonoBehaviour
                                 lastInstantiated.transform.position.y - distance, 1),
                     Quaternion.identity, transform);
                 allMapSeted.Add(lastInstantiated.transform);
+                if (lastInstantiated.transform.position.y < downLimit.position.y)
+                {
+                    generator = 1;
+                    lastInstantiated = Instantiate(map[generator],
+                        new Vector3(lastInstantiated.transform.position.x + distance,
+                                 lastInstantiated.transform.position.y, 1),
+                        Quaternion.identity, transform);
+                    allMapSeted.Add(lastInstantiated.transform);
+                    generator = 0;
+                    lastInstantiated = Instantiate(map[generator],
+                        new Vector3(lastInstantiated.transform.position.x,
+                                    lastInstantiated.transform.position.y + distance, 1),
+                        Quaternion.identity, transform);
+                    allMapSeted.Add(lastInstantiated.transform);
+                }
             }
             else if (generator == 4)
             {
@@ -92,34 +118,11 @@ public class MapGenerator : MonoBehaviour
                                 lastInstantiated.transform.position.y, 1),
                     Quaternion.identity, transform);
                 allMapSeted.Add(lastInstantiated.transform);
-            }
-          //  CorrectorLimit(generator);
-        }
-    }
-    void CorrectorLimit(int lastGenerator)//asAS
-    {
-        if(downLimit.position.y-2 > lastInstantiated.transform.position.y)
-        {
-            if(lastGenerator == 3)
-            {
-                lastGenerator = 4;
-                lastInstantiated = Instantiate(map[lastGenerator],
-                    new Vector3(lastInstantiated.transform.position.x,
-                                lastInstantiated.transform.position.y, 1),
-                    Quaternion.identity, transform);
-                allMapSeted.Add(lastInstantiated.transform);
-            }
-            if(lastGenerator == 4)
-            {
-                lastGenerator = 1;
-                lastInstantiated = Instantiate(map[lastGenerator],
-                    new Vector3(lastInstantiated.transform.position.x + distance,
-                             lastInstantiated.transform.position.y, 1),
-                    Quaternion.identity, transform);
-                allMapSeted.Add(lastInstantiated.transform);
+                
             }
         }
     }
+ 
     public List<Transform> GetMapSeted()
     {
         return allMapSeted;

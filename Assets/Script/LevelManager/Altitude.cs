@@ -9,8 +9,6 @@ public class Altitude : MonoBehaviour
     MapGenerator mp;
     [SerializeField]
     Transform player;
-    [SerializeField]
-    float minDistance;
     float result;
     // Start is called before the first frame update asAS
     void Start()
