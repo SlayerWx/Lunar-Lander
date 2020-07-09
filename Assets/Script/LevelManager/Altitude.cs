@@ -13,7 +13,6 @@ public class Altitude : MonoBehaviour
     // Start is called before the first frame update asAS
     void Start()
     {
-        //map = new List<Transform>();
         map = null;
         map = mp.GetMapSeted();
         

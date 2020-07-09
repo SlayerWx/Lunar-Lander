@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private GameObject creditsLayer;
 
+
     public void Play()
     {
         SceneManager.LoadScene("Game", LoadSceneMode.Single);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class stats : MonoBehaviour // asAS
+public class Stats : MonoBehaviour // asAS
 {
     [SerializeField]
     private Text time;
@@ -20,7 +20,7 @@ public class stats : MonoBehaviour // asAS
     [SerializeField]
     private Rigidbody2D playerRigid;
     [SerializeField]
-    private move playerMove;
+    private Move playerMove;
     [SerializeField]
     private Altitude alt;
     [SerializeField]
@@ -35,7 +35,7 @@ public class stats : MonoBehaviour // asAS
         verticalVel.text = "Vertical Vel";
         horizontalVel.text = "Horizontal Vel";
     }
-
+     
     // Update is called once per frame
     void Update()
     {

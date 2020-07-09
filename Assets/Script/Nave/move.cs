@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class move : MonoBehaviour
+public class Move : MonoBehaviour
 {
     [SerializeField]
     float constantForce;
@@ -25,9 +25,9 @@ public class move : MonoBehaviour
     }
     void UseGasoline()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && Time.timeScale != 0.0f)
         {
-            myRig.AddForce(transform.up* constantForce);
+            myRig.AddForce(transform.up * constantForce);
             gasoline--;
             if (!myPS.isPlaying)
             {
@@ -36,19 +36,20 @@ public class move : MonoBehaviour
         }
         else
         {
-            if(myPS.isPlaying) myPS.Stop();
+            if (myPS.isPlaying) myPS.Stop();
         }
     }
     void Rotar()
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            myRig.rotation = myRig.rotation - rotateSpeed;
+            myRig.rotation -= (rotateSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            myRig.rotation = myRig.rotation + rotateSpeed;
+            myRig.rotation += (rotateSpeed * Time.deltaTime);
         }
+        myRig.angularVelocity = 0.0f;
     }
     public int getGasoline()
     {

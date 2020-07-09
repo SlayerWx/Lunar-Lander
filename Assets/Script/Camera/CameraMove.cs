@@ -23,6 +23,7 @@ public class CameraMove : MonoBehaviour
     private bool firstTime;
     [SerializeField]
     private float velZoom;
+    private PlayerStatus myPlayerStatus;
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,6 +34,7 @@ public class CameraMove : MonoBehaviour
         startOrthographicSize = myCm.orthographicSize;
         firstTime = false;
         unZoomTimer = timeToGo;
+        myPlayerStatus = player.GetComponent<PlayerStatus>();
     }
 
     // Update is called once per frame

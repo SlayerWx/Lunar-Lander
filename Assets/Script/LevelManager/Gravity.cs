@@ -7,7 +7,7 @@ public class Gravity : MonoBehaviour
     [SerializeField]
     Vector2 gravityInWorld;
     [SerializeField]
-    move playerMovement;
+    Move playerMovement;
     
     void FixedUpdate()
     {
