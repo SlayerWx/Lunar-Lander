@@ -43,7 +43,7 @@ public class Move : MonoBehaviour
             else
             {
                 gasoline = 0;
-                
+                myPS.Stop();
             }
         }
         else
@@ -55,14 +55,20 @@ public class Move : MonoBehaviour
     {
         if (!inAnimation)
         {
+            myRig.isKinematic = false;
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 myRig.rotation -= (rotateSpeed * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.LeftArrow))
-            {
+            { 
                 myRig.rotation += (rotateSpeed * Time.deltaTime);
             }
+        }
+        else
+        {
+            myRig.isKinematic = true;
+            myRig.velocity = Vector2.zero;
         }
         myRig.angularVelocity = 0.0f;
     }

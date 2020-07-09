@@ -5,22 +5,27 @@ using UnityEngine;
 public class TimeOnLevel : MonoBehaviour
 {
     private float timerS;
-    private int timerM; 
+    private int timerM;
+    bool timerStop;
     // Start is called before the first frame update
     void Start()
     {
         timerS = 0.0f;
-        timerM = 0; 
+        timerM = 0;
+        timerStop = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timerS += Time.deltaTime;
-        if (timerS > 60)
+        if (!timerStop)
         {
-            timerS = 0;
-            timerM++;
+            timerS += Time.deltaTime;
+            if (timerS > 60)
+            {
+                timerS = 0;
+                timerM++;
+            }
         }
     }
     public int GetSeconds()
@@ -30,5 +35,9 @@ public class TimeOnLevel : MonoBehaviour
     public float getMinutes()
     {
         return timerM;
+    }
+    public void SetTimerStop(bool v)
+    {
+        timerStop = v;
     }
 }

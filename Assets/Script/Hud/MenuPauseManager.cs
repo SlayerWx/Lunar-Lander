@@ -12,13 +12,15 @@ public class MenuPauseManager : MonoBehaviour
     GameObject pauseMenu;
     [SerializeField]
     GameObject warningMenu;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField]
+    LevelCondition lvlCon;
+    [SerializeField]
+    GameObject nextRequest;
+    [SerializeField]
+    GameObject NotGasolineMenu;
+    [SerializeField]
+    TimeOnLevel tmolvl;
+    // Update is called once per frame asAS
     void Update()
     {
         Paused();
@@ -28,17 +30,35 @@ public class MenuPauseManager : MonoBehaviour
         if(playerStatus.GetWantPause() && playerStatus.GetAlive())
         {
             pauseMenu.SetActive(true);
-            
+            tmolvl.SetTimerStop(true);
         }
         else if(!playerStatus.GetWantPause() && playerStatus.GetAlive())
         {
             pauseMenu.SetActive(false);
             warningMenu.SetActive(false);
+            tmolvl.SetTimerStop(false);
+        }
+        if(lvlCon.RequestToNextHud())
+        {
+            nextRequest.SetActive(true);
+            tmolvl.SetTimerStop(true);
+
+        }
+        else if(nextRequest.activeSelf)
+        {
+            nextRequest.SetActive(false);
+        }
+        if(!playerStatus.GetHasGasoline() &&! playerStatus.GetAlive())
+        {
+            if(lvlCon.getFinNext())
+            NotGasolineMenu.SetActive(true);
+            tmolvl.SetTimerStop(true);
         }
     }
     public void ExitRequest()
     {
         warningMenu.SetActive(true);
+        tmolvl.SetTimerStop(true);
     }
     public void YesButtonPressed()
     {
@@ -47,5 +67,14 @@ public class MenuPauseManager : MonoBehaviour
     public void NoButtonPressed()
     {
         warningMenu.SetActive(false);
+    }
+    public void StagePauseNextFalse()
+    {
+        nextRequest.SetActive(false);
+    }
+    public void SaveAndExit()
+    {
+
+        YesButtonPressed();
     }
 }

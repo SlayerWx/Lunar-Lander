@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LostAnimation : MonoBehaviour
+public class LossAnimation : MonoBehaviour
 {
     [SerializeField]
     Sprite[] fireStep;
