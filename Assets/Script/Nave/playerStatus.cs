@@ -8,12 +8,14 @@ public class PlayerStatus : MonoBehaviour
     bool wantPause;
     bool safeLanding;
     Move myMove;
+    int myPoints;
     void Start()
     {
         alive = true;
         wantPause = false;
         safeLanding = false;
         myMove = GetComponent<Move>();
+        myPoints = 0;
     }
     void Update()
     {
@@ -57,5 +59,17 @@ public class PlayerStatus : MonoBehaviour
         {
             wantPause = false;
         }
+    }
+    public void SumPoints(int newPoints)
+    {
+        myPoints += newPoints;
+    }
+    public void resetPoints()
+    {
+        myPoints = 0;
+    }
+    public int GetPoints()
+    {
+        return myPoints;
     }
 }

@@ -24,12 +24,14 @@ public class Stats : MonoBehaviour // asAS
     [SerializeField]
     private Altitude alt;
     [SerializeField]
-    TimeOnLevel timer;
+    private TimeOnLevel timer;
+    [SerializeField]
+    private PlayerStatus pS;
     // Start is called before the first frame update
     void Start()
     {
         time.text = "Time 0:00"; 
-        points.text = "Points";
+        points.text = "Points 0";
         gasoline.text = "Gasoline ??";
         altitude.text = "altitude ??";
         verticalVel.text = "Vertical Vel";
@@ -49,6 +51,6 @@ public class Stats : MonoBehaviour // asAS
         else if ((int)(playerRigid.velocity.x * 10) > 0) horizontalVel.text = "Horizontal vel " + (int)Mathf.Abs(playerRigid.velocity.x * 10) + " Right";
         else horizontalVel.text = "Horizontal vel " + (int)Mathf.Abs(playerRigid.velocity.x * 10);
         altitude.text = "Altitude " + (int)alt.GetAltitude() + "KM";
+        points.text = "Points " + pS.GetPoints();
     }
 }
-//asAS

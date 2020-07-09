@@ -74,7 +74,7 @@ public class MenuPauseManager : MonoBehaviour
     }
     public void SaveAndExit()
     {
-
+        Save.SaveScore(playerStatus.GetPoints());
         YesButtonPressed();
     }
 }

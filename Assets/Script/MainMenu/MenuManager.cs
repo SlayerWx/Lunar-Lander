@@ -9,7 +9,8 @@ public class MenuManager : MonoBehaviour
     private GameObject mainLayer;
     [SerializeField]
     private GameObject creditsLayer;
-
+    [SerializeField]
+    private GameObject scoreLayer;
 
     public void Play()
     {
@@ -28,5 +29,15 @@ public class MenuManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+    public void EntryScore()
+    {
+        mainLayer.SetActive(false);
+        scoreLayer.SetActive(true);
+    }
+    public void ExitScore()
+    {
+        mainLayer.SetActive(true);
+        scoreLayer.SetActive(false);
     }
 }
