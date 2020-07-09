@@ -6,13 +6,22 @@ public class MySound : MonoBehaviour
 {
     AudioSource mySound;
     // Start is called before the first frame update
+    static bool ready = false;
     void Start()
     {
-        mySound = GetComponent<AudioSource>();
-        if (!mySound.isPlaying)
-            mySound.Play();
-        mySound.volume = 0.10f;
-        DontDestroyOnLoad(transform.gameObject);
+        if (!ready)
+        {
+            mySound = GetComponent<AudioSource>();
+            if (!mySound.isPlaying)
+                mySound.Play();
+            mySound.volume = 0.10f;
+            DontDestroyOnLoad(transform.gameObject);
+            ready = true;  
+        }
+        else
+        {
+            Destroy(transform.gameObject);
+        }
     } 
     void Update()
     {
