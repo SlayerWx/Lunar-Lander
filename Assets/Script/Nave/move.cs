@@ -11,11 +11,15 @@ public class Move : MonoBehaviour
     private Rigidbody2D myRig;
     [SerializeField]
     private ParticleSystem myPS;
+    [SerializeField]
     private int gasoline;
+    Vector3 startPosition;
+    bool inAnimation;
     void Start()
     {
         myRig = GetComponent<Rigidbody2D>();
-        gasoline = 5500;
+        startPosition = transform.position;
+        inAnimation = false;
     }
 
     void Update()
@@ -25,13 +29,21 @@ public class Move : MonoBehaviour
     }
     void UseGasoline()
     {
-        if (Input.GetKey(KeyCode.Space) && Time.timeScale != 0.0f)
+        if (Input.GetKey(KeyCode.Space) && Time.timeScale != 0.0f && !inAnimation)
         {
-            myRig.AddForce(transform.up * constantForce);
-            gasoline--;
-            if (!myPS.isPlaying)
+            if (gasoline > 0)
             {
-                myPS.Play();
+                myRig.AddForce(transform.up * constantForce);
+                gasoline--;
+                if (!myPS.isPlaying)
+                {
+                    myPS.Play();
+                }
+            }
+            else
+            {
+                gasoline = 0;
+                
             }
         }
         else
@@ -41,22 +53,39 @@ public class Move : MonoBehaviour
     }
     void Rotar()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (!inAnimation)
         {
-            myRig.rotation -= (rotateSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            myRig.rotation += (rotateSpeed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                myRig.rotation -= (rotateSpeed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                myRig.rotation += (rotateSpeed * Time.deltaTime);
+            }
         }
         myRig.angularVelocity = 0.0f;
     }
-    public int getGasoline()
+    public int GetGasoline()
     {
         return gasoline;
     }
     public void ForceAffecting(Vector2 force)
     {
         myRig.AddForce(force);
+    }
+    public Vector2 GetVelocity()
+    {
+        return myRig.velocity;
+    }
+    public void RestartPosition()
+    {
+        transform.position = startPosition;
+        transform.rotation = Quaternion.identity;
+        myRig.velocity = Vector2.zero;
+    }
+    public void SetInAnimation(bool w)
+    {
+        inAnimation = w;
     }
 }

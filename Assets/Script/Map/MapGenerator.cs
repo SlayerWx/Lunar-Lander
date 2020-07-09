@@ -127,5 +127,22 @@ public class MapGenerator : MonoBehaviour
     {
         return allMapSeted;
     }
+    void DestroyMap()
+    {
+        if (allMapSeted.Count!= 0)
+        {
+            foreach (Transform w in allMapSeted)
+            {
+                Destroy(w.gameObject);
+            }
+            allMapSeted.Clear();
+        }
+    }
+    public void RestartMap()
+    { 
+        lastInstantiated = null; 
+        DestroyMap();
+        Generate();
+    }
 
 }

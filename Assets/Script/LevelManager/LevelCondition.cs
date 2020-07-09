@@ -5,7 +5,13 @@ using UnityEngine;
 public class LevelCondition : MonoBehaviour
 {
     [SerializeField]
-    PlayerStatus playerStatus;
+    PlayerStatus plyerttu;
+    [SerializeField]
+    LostAnimation plyerNimtion;
+    [SerializeField]
+    Move plyerMove;
+    [SerializeField]
+    MapGenerator mp;
     void Start()
     {
 
@@ -19,25 +25,37 @@ public class LevelCondition : MonoBehaviour
     }
     void PlayerRequestPause()
     {
-        if (playerStatus.GetWantPause() && playerStatus.GetAlive())
+        if (plyerttu.GetWantPause() && plyerttu.GetAlive())
         {
             Time.timeScale = 0.0f;
         }
-        else if (!playerStatus.GetWantPause() && playerStatus.GetAlive())
+        else if (!plyerttu.GetWantPause() && plyerttu.GetAlive())
         {
             Time.timeScale = 1.0f;
         }
     }
     void WinCondition()
     {
-        if(playerStatus.GetAlive() && playerStatus.GetSafeLanding())
+        if(plyerttu.GetAlive() && plyerttu.GetSafeLanding())
         {
 
         }
     }
     void LostCondition()
     {
-        if(!playerStatus.GetAlive())
+        if(!plyerttu.GetAlive() && plyerttu.GetHasGasoline())
+        {
+            plyerMove.SetInAnimation(true);
+            if (plyerNimtion.Animation())
+            {
+                plyerMove.RestartPosition();
+                plyerttu.SetAlive(true);
+                mp.RestartMap();
+                plyerMove.SetInAnimation(false);
+
+            }
+        }
+        if(!plyerttu.GetHasGasoline() && !plyerttu.GetAlive())
         {
 
         }

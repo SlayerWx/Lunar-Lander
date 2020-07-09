@@ -6,16 +6,14 @@ public class PlayerStatus : MonoBehaviour
 {
     bool alive;
     bool wantPause;
-    bool hasGasoline;
     bool safeLanding;
-
-    // Start is called before the first frame updat asAS
+    Move myMove;
     void Start()
     {
         alive = true;
         wantPause = false;
-        hasGasoline = true;
         safeLanding = false;
+        myMove = GetComponent<Move>();
     }
     void Update()
     {
@@ -37,13 +35,9 @@ public class PlayerStatus : MonoBehaviour
     {
         return wantPause;
     }
-    public void SetHasGasoline(bool value)
-    {
-        hasGasoline = value;
-    }
     public bool GetHasGasoline()
     {
-        return hasGasoline;
+        return myMove.GetGasoline()>0;
     }
     public void SetSafeLanding(bool value)
     {

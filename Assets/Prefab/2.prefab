@@ -123,5 +123,15 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.97578084
       objectReference: {fileID: 0}
+    - target: {fileID: 1755397616567055493, guid: e6c4acffa20f81140a2ea2c207cad035,
+        type: 3}
+      propertyPath: imVictoryCollision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115339188411202861, guid: e6c4acffa20f81140a2ea2c207cad035,
+        type: 3}
+      propertyPath: imVictoryCollision
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6c4acffa20f81140a2ea2c207cad035, type: 3}

@@ -118,5 +118,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 1865471713034928049, guid: 3638bdbda0fd8ad47a5575cdfc3629ba,
+        type: 3}
+      propertyPath: imVictoryCollision
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3638bdbda0fd8ad47a5575cdfc3629ba, type: 3}

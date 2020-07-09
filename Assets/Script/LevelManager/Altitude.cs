@@ -15,13 +15,13 @@ public class Altitude : MonoBehaviour
     {
         map = null;
         map = mp.GetMapSeted();
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        AltitudeGenerator();
+        if(map!=null)AltitudeGenerator();
     }
     void AltitudeGenerator()
     {

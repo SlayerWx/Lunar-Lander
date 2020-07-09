@@ -41,7 +41,7 @@ public class Stats : MonoBehaviour // asAS
     {
         if (timer.GetSeconds() > 9) time.text = "Time " + timer.getMinutes() + ":" + timer.GetSeconds();
         else time.text = "Time " + timer.getMinutes() + ":0" + timer.GetSeconds();
-        gasoline.text = "Gasoline " + playerMove.getGasoline();
+        gasoline.text = "Gasoline " + playerMove.GetGasoline();
         if ((int)(playerRigid.velocity.y * 10) > 0) verticalVel.text = "Vertical vel " + (int)Mathf.Abs(playerRigid.velocity.y * 10) + " Up";
         else if ((int)(playerRigid.velocity.y * 10) < 0) verticalVel.text = "Vertical vel " + (int)Mathf.Abs(playerRigid.velocity.y * 10) + " Down";
         else verticalVel.text = "Vertical vel " + (int)Mathf.Abs(playerRigid.velocity.y * 10);
