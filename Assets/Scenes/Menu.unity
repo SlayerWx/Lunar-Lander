@@ -2938,8 +2938,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Creado por: Ruffo Maximiliano\nProgramas Utilizados\nUnity3D, Gimp 2\nA\xF1o
-    2020"
+  m_Text: 'By Ruffo Maximiliano
+
+    Utility:
+
+    Unity3D, Gimp 2, Beepbox
+
+    age 2020'
 --- !u!222 &1982597126
 CanvasRenderer:
   m_ObjectHideFlags: 0
