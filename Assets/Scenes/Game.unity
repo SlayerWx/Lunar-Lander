@@ -1784,7 +1784,7 @@ MonoBehaviour:
   constantForce: 0.9
   rotateSpeed: 50
   myPS: {fileID: 1974924218}
-  gasoline: 500
+  gasoline: 5500
 --- !u!50 &994834461
 Rigidbody2D:
   serializedVersion: 4
