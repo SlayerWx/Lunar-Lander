@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &91274301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8466,7 +8466,9 @@ MonoBehaviour:
 
     Rotate: Left/Right Arrow
 
-    Propel: Space'
+    Propel: Space
+
+    Volume: Up i, Down u'
 --- !u!222 &2014970857
 CanvasRenderer:
   m_ObjectHideFlags: 0
