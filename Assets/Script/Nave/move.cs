@@ -14,7 +14,7 @@ public class Move : MonoBehaviour
     [SerializeField]
     private int gasoline;
     Vector3 startPosition;
-    bool inAnimation;
+    bool inAnimation; 
     void Start()
     {
         myRig = GetComponent<Rigidbody2D>();

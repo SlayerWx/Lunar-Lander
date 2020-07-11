@@ -25,7 +25,7 @@ public class LevelCondition : MonoBehaviour
         finNext = false;
         requestHudToNext = false;
     }
-
+ 
     void Update()
     {
         PlayerRequestPause();
@@ -77,7 +77,7 @@ public class LevelCondition : MonoBehaviour
                 mp.RestartMap();
                 plyerMove.SetInAnimation(false);
                 tolvl.SetTimerStop(false);
-
+ 
             }
         }
         if(!plyerttu.GetHasGasoline() && !plyerttu.GetAlive())
