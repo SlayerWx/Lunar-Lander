@@ -7,14 +7,14 @@ public class PlayerStatus : MonoBehaviour
     bool alive;
     bool wantPause;
     bool safeLanding;
-    Move myMove;
+    move myMove;
     int myPoints;
     void Start()
     {
         alive = true;
         wantPause = false;
         safeLanding = false;
-        myMove = GetComponent<Move>();
+        myMove = GetComponent<move>();
         myPoints = 0;
     }
     void Update()

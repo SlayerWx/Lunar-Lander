@@ -9,7 +9,7 @@ public class LevelCondition : MonoBehaviour
     [SerializeField]
     LossAnimation plyerNimtion;
     [SerializeField]
-    Move plyerMove;
+    move plyerMove;
     [SerializeField]
     MapGenerator mp;
     [SerializeField]

@@ -31,7 +31,7 @@ public class ObjectiveCollision : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             PlayerStatus w = col.gameObject.GetComponent<PlayerStatus>();
-            Vector2 velP = col.gameObject.GetComponent<Move>().GetVelocity();
+            Vector2 velP = col.gameObject.GetComponent<move>().GetVelocity();
             if (imVictoryCollision && Mathf.Abs(velP.x) < minVel && Mathf.Abs(velP.y) < minVel&& Mathf.Abs(col.transform.rotation.eulerAngles.z) < minRotate)
             {
                 w.SetSafeLanding(true);

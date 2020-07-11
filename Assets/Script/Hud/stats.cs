@@ -20,7 +20,7 @@ public class Stats : MonoBehaviour // asAS
     [SerializeField]
     private Rigidbody2D playerRigid;
     [SerializeField]
-    private Move playerMove;
+    private move playerMove;
     [SerializeField]
     private Altitude alt;
     [SerializeField]
