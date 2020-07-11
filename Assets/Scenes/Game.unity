@@ -3289,7 +3289,7 @@ MonoBehaviour:
   verticalVel: {fileID: 146214996}
   horizontalVel: {fileID: 1640638609}
   playerRigid: {fileID: 994834461}
-  playerMove: {fileID: 0}
+  playerMove: {fileID: 994834460}
   alt: {fileID: 1654107822}
   timer: {fileID: 1654107821}
   pS: {fileID: 994834462}
@@ -3580,7 +3580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityInWorld: {x: 0, y: -0.5}
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 994834460}
 --- !u!4 &1654107820
 Transform:
   m_ObjectHideFlags: 0
@@ -3635,7 +3635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plyerttu: {fileID: 994834462}
   plyerNimtion: {fileID: 826698941}
-  plyerMove: {fileID: 0}
+  plyerMove: {fileID: 994834460}
   mp: {fileID: 1327842746}
   wPlyerMove: {fileID: 994834464}
   tolvl: {fileID: 1654107821}

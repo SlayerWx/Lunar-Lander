@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Stats : MonoBehaviour // asAS
+public class stats : MonoBehaviour // asAS
 {
     [SerializeField]
     private Text time;
