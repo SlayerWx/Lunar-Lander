@@ -3580,7 +3580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityInWorld: {x: 0, y: -0.5}
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 994834460}
 --- !u!4 &1654107820
 Transform:
   m_ObjectHideFlags: 0
