@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatus : MonoBehaviour
+public class playerStatus : MonoBehaviour
 {
     bool alive;
     bool wantPause;

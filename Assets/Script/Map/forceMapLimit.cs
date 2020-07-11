@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForceMapLimit : MonoBehaviour
+public class forceMapLimit : MonoBehaviour
 {
     [SerializeField]
     private Vector2 myForceDirection;

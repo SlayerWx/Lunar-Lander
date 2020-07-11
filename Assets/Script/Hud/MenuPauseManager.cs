@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MenuPauseManager : MonoBehaviour
 {
     [SerializeField]
-    PlayerStatus playerStatus;
+    playerStatus playerStatus;
     [SerializeField]
     GameObject pauseMenu;
     [SerializeField]

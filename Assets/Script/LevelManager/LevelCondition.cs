@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelCondition : MonoBehaviour
 {
     [SerializeField]
-    PlayerStatus plyerttu;
+    playerStatus plyerttu;
     [SerializeField]
     LossAnimation plyerNimtion;
     [SerializeField]

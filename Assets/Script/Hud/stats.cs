@@ -26,7 +26,7 @@ public class Stats : MonoBehaviour // asAS
     [SerializeField]
     private TimeOnLevel timer;
     [SerializeField]
-    private PlayerStatus pS;
+    private playerStatus pS;
     // Start is called before the first frame update
     void Start()
     {
